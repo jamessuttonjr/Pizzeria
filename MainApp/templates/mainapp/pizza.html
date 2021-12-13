@@ -1,0 +1,45 @@
+{% extends "MainApp/base.html" %}
+
+ 
+
+{% block page_header %}
+    <h1>{{ pizza }}</h1>
+{% endblock page_header %}
+
+ 
+{% block content %}
+    
+        
+        {% for t in toppings %}
+            <div class='card mb-3'>
+                <div class='card-body'>
+                    {{ t }}
+                </div>
+            </div>
+           
+        {% empty %}
+            <p>This pizza has no available toppings</p>
+        {% endfor %}
+
+        <p>Comments : </p>
+        
+        {% for c in comments %}
+            <div class="card mb-3">
+                <div class = "card-body">
+                    {{ c|linebreaks}}
+                </div>
+            </div>
+        {% empty %}
+            <p>There have been no comments made yet for this pizza.</p>
+        {% endfor %}
+        <h3><a href="{% url 'MainApp:comment' pizza.id %}">Add a new comment</a></h3>
+
+
+        {% for i in image %}
+            <div class="col-md-4">
+                <img src="{{ i.image.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+            </div>
+        {% empty %}
+            <p>No image is available for this pizza.</p>
+        {% endfor %}
+{% endblock content %}

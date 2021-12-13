@@ -1,0 +1,26 @@
+{% extends "MainApp/base.html" %}
+
+ 
+
+{% block page_header %}
+
+<div class="jumbotron">
+
+    <h1 class="display-4">James's Pristine Pizza</h1>
+
+    <p class="lead">Welcome to James's Pristine Pizza!</p>
+
+    <hr class="my-4">
+
+    <p>Select Pizzas below to view all available Pizzas.</p>
+
+    <p class="lead">
+
+      <a class="btn btn-primary btn-lg" href="{% url 'MainApp:pizzas' %}" role="button">Pizzas</a>
+
+    </p>
+
+  </div>
+
+{% endblock page_header %}
+

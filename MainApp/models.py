@@ -17,3 +17,18 @@ class Toppings(models.Model):
 
     def __str__(self):
         return self.name
+
+class Comment(models.Model):
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    comment = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = 'Comments'
+
+    def __str__(self):
+        return f"{self.comment[:300]}"
+
+class Image(models.Model):
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/')
